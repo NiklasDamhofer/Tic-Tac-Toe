@@ -1,5 +1,5 @@
-const container =  document.querySelector('#game-board');
-let icon = "X";
+const container = document.querySelector('#game-board');
+let icon = 'X';
 const winCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -9,7 +9,7 @@ const winCombos = [
     [2, 5, 8],
     [0, 4, 8],
     [6, 4, 2]
-]; 
+];
 
 let playerPositionX = [];
 let playerPositionY = [];
@@ -19,32 +19,25 @@ function createBoard() {
         const board = document.createElement('div');
         board.className = 'cell';
         board.id = i;
-        board.textContent = "";
+        board.textContent = '';
         board.addEventListener('click', function() {
-            if (board.textContent === "") {
+            if (board.textContent === '') {
                 board.textContent = icon;
-                let cellId = board.id;
-                if (icon == "X") {
+                let cellId = parseInt(board.id);
+                if (icon == 'X') {
                     playerPositionX.push(cellId);
                 } else {
                     playerPositionY.push(cellId);
                 }
                 checkWinner();
                 changePlayer();
+                console.log(playerPositionX);
+                console.log(playerPositionY);
             } else {
-                console.log('Error')
-            } 
+                console.log('Error');
+            }
         });
         container.appendChild(board);
-    }
-}
-
-
-function changePlayer() {
-    if (icon == "X") {
-        icon = "O";
-    } else {
-        icon = "X";
     }
 }
 
@@ -61,15 +54,17 @@ function checkWinner() {
     }
 }
 
+function changePlayer() {
+    icon = icon === 'X' ? 'O' : 'X';
+}
+
 function resetGame() {
     playerPositionX = [];
     playerPositionY = [];
-    icon = "X";
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
-        cell.textContent = "";
+        cell.textContent = '';
     });
 }
-
 
 createBoard();

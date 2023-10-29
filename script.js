@@ -11,6 +11,7 @@ const winCombos = [
     [6, 4, 2]
 ]; 
 
+let playerPosition = []
 
 function createBoard() {
     for (let i = 0; i < 9; i++) {
@@ -21,7 +22,9 @@ function createBoard() {
         board.addEventListener('click', function() {
             if (board.textContent === "") {
                 board.textContent = icon;
+                checkWinner();
                 changePlayer();
+
             } else {
                 console.log('Error')
             } 
@@ -46,10 +49,14 @@ createBoard();
 
 const cells = document.querySelectorAll('.cell');
 
-for (let j = 0; j < 9; j++) {
-    cells[j].addEventListener('click', turnClick, false);
-};
+function checkWinner() {
+    for (let j = 0; j < 9; j++) {
+        cells[j].addEventListener('click', turnClick, false);
+    };
+}
+
 
 function turnClick(square) {
     console.log(square.target.id);
+    console.log(square.target.textContent);
 };

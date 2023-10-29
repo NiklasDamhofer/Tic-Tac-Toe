@@ -12,7 +12,7 @@ html {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.block {
+.cell {
     background-color: #f4f4f4;
     border: 3px solid #333;
     width: 200px;
@@ -27,4 +27,9 @@ html {
 h1 {
     text-align: center;
     font-size: 80px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 25px;
 }
